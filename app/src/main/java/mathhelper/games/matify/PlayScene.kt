@@ -142,7 +142,7 @@ class PlayScene {
                 redrawRules(rules)
             }
         } else {
-            activity.previous.isEnabled = !history.empty
+            activity.previous.isEnabled = (history.size > 1)
         }
         Statistics.logPlace(stepsCount, activity.globalMathView.expression!!, activity.globalMathView.currentAtoms)
     }
@@ -172,6 +172,7 @@ class PlayScene {
             loadFinite()
         }
         history.clear()
+        history.saveState(stepsCount, currentTime, activity.globalMathView.expression!!)
         showMessage("\uD83C\uDF40 ${currentLevel.getNameByLanguage(languageCode)} \uD83C\uDF40")
         Statistics.setStartTime()
         Statistics.logStart()
@@ -223,7 +224,7 @@ class PlayScene {
                 activity.globalMathView.setExpression(state.expression, currentLevel.subjectType, false)
                 //val penalty = UndoPolicyHandler.getPenalty(currentLevel.undoPolicy, state.depth)
                 //stepsCount = stepsCount - 1 + penalty
-                if (history.empty) {
+                if (history.size < 2) {
                     activity.previous.isEnabled = false
                 }
             }
@@ -280,7 +281,7 @@ class PlayScene {
         }
         v.findViewById<TextView>(R.id.steps)?.text = stepsCount.toInt().toString()
         v.findViewById<TextView>(R.id.mode)?.text = if (multi) playActivity!!.getString(R.string.multiselection_mode_is_on)
-            else playActivity!!.getString(R.string.multiselection_mode_is_off)
+        else playActivity!!.getString(R.string.multiselection_mode_is_off)
         builder.setView(v)
         val alert = builder.create()
         AndroidUtil.showDialog(alert, bottomGravity = false, backMode = BackgroundMode.BLUR,
@@ -311,7 +312,7 @@ class PlayScene {
         }
         activity.halfExpandBottomSheet()
         activity.rulesMsg.text = if (rules.isEmpty()) activity.getString(R.string.no_rules_msg)
-            else activity.getString(R.string.rules_found_msg)
+        else activity.getString(R.string.rules_found_msg)
     }
 
     fun onWin(context: Context) {
