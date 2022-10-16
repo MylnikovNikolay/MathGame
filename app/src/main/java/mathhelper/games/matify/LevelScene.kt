@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import mathhelper.games.matify.activities.GamesActivity
 import mathhelper.games.matify.activities.LevelsActivity
 import mathhelper.games.matify.activities.PlayActivity
+import mathhelper.games.matify.activities.TextActivity
 import mathhelper.games.matify.common.ConnectionChecker
 import mathhelper.games.matify.common.Logger
 import mathhelper.games.matify.game.GameResult
@@ -47,13 +48,24 @@ class LevelScene {
                 value >= 0 && value < levels.size -> {
                     field = value
                     currentLevel = levels[value]
-                    Handler().postDelayed({
-                        if (PlayScene.shared.playActivity == null) {
-                            levelsActivity?.startActivity(Intent(levelsActivity, PlayActivity::class.java))
-                        } else {
-                            PlayScene.shared.playActivity!!.startCreatingLevelUI()
-                        }
-                    }, 100)
+
+                    if (currentLevel!!.descriptionShortEn.startsWith("text")) {
+                        Handler().postDelayed({
+                            if (TextScene.shared.textActivity == null) {
+                                levelsActivity?.startActivity(Intent(levelsActivity, TextActivity::class.java))
+                            } else {
+                                //TextScene.shared.textActivity!!.startCreatingLevelUI()
+                            }
+                        }, 100)
+                    } else {
+                        Handler().postDelayed({
+                            if (PlayScene.shared.playActivity == null) {
+                                levelsActivity?.startActivity(Intent(levelsActivity, PlayActivity::class.java))
+                            } else {
+                                PlayScene.shared.playActivity!!.startCreatingLevelUI()
+                            }
+                        }, 100)
+                    }
                 }
                 value < 0 -> {
                 }

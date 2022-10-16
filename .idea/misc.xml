@@ -39,6 +39,16 @@
         <entry key="..\:/Users/a_koz/OneDrive/Desktop/SPbPU/Diploma2/MathGame/app/src/main/res/layout/unsaved_data.xml" value="0.25" />
         <entry key="..\:/Users/a_koz/OneDrive/Desktop/SPbPU/Diploma2/MathGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.28675213675213673" />
         <entry key="..\:/Users/a_koz/OneDrive/Desktop/SPbPU/Diploma2/MathGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.28675213675213673" />
+        <entry key="app/src/main/res/layout/activity_account.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/activity_change_pass.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/activity_levels.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/activity_play.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/activity_play_new.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/activity_settings_new.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/connection_alert.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/connection_offline.xml" value="0.17325227963525835" />
+        <entry key="app/src/main/res/layout/game_info.xml" value="0.17325227963525835" />
       </map>
     </option>
   </component>
