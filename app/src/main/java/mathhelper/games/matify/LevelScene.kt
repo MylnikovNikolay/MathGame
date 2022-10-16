@@ -51,11 +51,7 @@ class LevelScene {
 
                     if (currentLevel!!.descriptionShortEn.startsWith("text")) {
                         Handler().postDelayed({
-                            if (TextScene.shared.textActivity == null) {
-                                levelsActivity?.startActivity(Intent(levelsActivity, TextActivity::class.java))
-                            } else {
-                                //TextScene.shared.textActivity!!.startCreatingLevelUI()
-                            }
+                            levelsActivity?.startActivity(Intent(levelsActivity, TextActivity::class.java))
                         }, 100)
                     } else {
                         Handler().postDelayed({

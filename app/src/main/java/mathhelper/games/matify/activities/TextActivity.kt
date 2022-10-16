@@ -21,4 +21,9 @@ class TextActivity : AppCompatActivity() {
     private fun setViews() {
 
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        TextScene.shared.textActivity = null
+    }
 }
