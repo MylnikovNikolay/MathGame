@@ -259,5 +259,5 @@ data class Level(
         }
     }
 
-    fun isText() = descriptionEn.startsWith("text")
+    fun isText() = descriptionShortEn.startsWith("text")
 }
