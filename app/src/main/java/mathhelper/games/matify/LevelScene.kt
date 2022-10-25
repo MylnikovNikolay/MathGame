@@ -49,7 +49,7 @@ class LevelScene {
                     field = value
                     currentLevel = levels[value]
 
-                    if (currentLevel!!.descriptionShortEn.startsWith("text")) {
+                    if (currentLevel!!.isText()) {
                         Handler().postDelayed({
                             levelsActivity?.startActivity(Intent(levelsActivity, TextActivity::class.java))
                         }, 100)

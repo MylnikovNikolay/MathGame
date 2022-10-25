@@ -258,4 +258,6 @@ data class Level(
             }
         }
     }
+
+    fun isText() = descriptionEn.startsWith("text")
 }
