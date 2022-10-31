@@ -62,6 +62,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
         </activity>
+        <activity android:name="mathhelper.games.matify.activities.TextActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
     </application>
 
 </manifest>

@@ -14,6 +14,8 @@ class History {
 
     val empty
         get() = states.isEmpty()
+    val size
+        get() = states.size
 
     fun saveState(steps: Double, time: Long, expression: ExpressionNode) {
         Logger.d(TAG, "saveState")
@@ -24,11 +26,11 @@ class History {
 
     fun getPreviousStep(): State? {
         Logger.d(TAG, "getPreviousStep")
-        if (states.size < 1) {
+        if (states.size < 2) {
             LevelScene.shared.levelsActivity?.updateResult(null)
             return null
         }
-        val res = states[states.size - 1]
+        val res = states[states.size - 2]
         states.removeAt(states.size - 1)
         LevelScene.shared.levelsActivity?.updateResult(res.result)
         return res

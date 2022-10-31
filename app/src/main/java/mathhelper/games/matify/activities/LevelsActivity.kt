@@ -137,13 +137,18 @@ class LevelsActivity: AppCompatActivity(), ConnectionListener {
 
     fun updateResult(result: LevelResult?) {
         val i = LevelScene.shared.currentLevelIndex
-        val oldRes = LevelScene.shared.currentLevel?.lastResult
-        levelViews[i].text = "${LevelScene.shared.currentLevel?.getNameByLanguage(resources.configuration.locale.language)}" +
-            if (result != null) {
-                "\n${result}"
-            } else {
-                ""
-            }
+        val currentLevel = LevelScene.shared.currentLevel
+        val oldRes = currentLevel?.lastResult
+        if (currentLevel?.isText() != true) {
+            levelViews[i].text = "\uD83D\uDD8A️ ${currentLevel?.getNameByLanguage(resources.configuration.locale.language)}" +
+                if (result != null) {
+                    "\n${result}"
+                } else {
+                    ""
+                }
+        } else {
+            levelViews[i].text = "\uD83D\uDCC4 ${currentLevel?.getNameByLanguage(resources.configuration.locale.language)}"
+        }
         when (result?.state) {
             StateType.DONE -> {
                 when (oldRes?.state) {
@@ -182,8 +187,13 @@ class LevelsActivity: AppCompatActivity(), ConnectionListener {
         LevelScene.shared.levels.forEachIndexed { i, level ->
             val levelView = AndroidUtil.createButtonView(this)
             levelView.text = level.getNameByLanguage(resources.configuration.locale.language)
-            if (level.lastResult != null) {
-                levelView.text = "${level.getNameByLanguage(resources.configuration.locale.language)}\n${level.lastResult!!}"
+            if (level.isText()) {
+                levelView.text = "\uD83D\uDCC4 ${levelView.text}"
+            } else {
+                if (level.lastResult != null) {
+                    levelView.text = "${level.getNameByLanguage(resources.configuration.locale.language)}\n${level.lastResult!!}"
+                }
+                levelView.text = "\uD83D\uDD8A️ ${levelView.text}"
             }
             val themeName = Storage.shared.theme()
             levelView.setTextColor(ThemeController.shared.color(ColorName.TEXT_COLOR))
